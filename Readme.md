@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов (простой)»
 
 * Студент: [Yuliya Kursevich](https://up.htmlacademy.ru/react/11/user/1150911).
-* Наставник: `Неизвестно`.
+* Наставник: [Надежда Комарицкая](https://htmlacademy.ru/profile/id644051).
 
 ---
 
