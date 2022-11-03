@@ -1,4 +1,5 @@
 function PropertyScreen(): JSX.Element {
+
   return(
     <div className="page">
       <div style={{ display: 'none' }}>
