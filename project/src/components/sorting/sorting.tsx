@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Sort } from '../../const/const';
+import classNames from 'classnames';
 
 function Sorting():JSX.Element {
   const [activeSort, setActiveSort] = useState(Sort.POPULAR);
@@ -14,7 +15,11 @@ function Sorting():JSX.Element {
           <use xlinkHref="#icon-arrow-select" />
         </svg>
       </span>
-      <ul className={`places__options places__options--custom ${isSortOpen ? 'places__options--opened' : ''}`}>
+      <ul className={classNames(
+        'places__options',
+        'places__options--custom',
+        {'places__options--opened': isSortOpen})}
+      >
         {Object.entries(Sort).map(([key,value]) => (
           <li
             key={key}

@@ -4,6 +4,7 @@ import Rating from '../rating/Rating';
 import { MouseEvent } from 'react';
 import { AppRoute } from '../../const/const';
 import Price from '../price/price';
+import classNames from 'classnames';
 
 type OfferProps = {
   className: string;
@@ -16,7 +17,10 @@ function Offer({className, offer, currentOffer, setCurrentOffer}:OfferProps): JS
 
   return(
     <article
-      className={`${className}__card place-card${offer === currentOffer ? ' active' : ''}`}
+      className={classNames(
+        `${className}__card`,
+        'place-card',
+        {'active': offer === currentOffer})}
       onMouseEnter={(event: MouseEvent<HTMLElement>) =>
         setCurrentOffer(offer)}
       onMouseLeave={(event: MouseEvent<HTMLElement>) =>
@@ -26,7 +30,7 @@ function Offer({className, offer, currentOffer, setCurrentOffer}:OfferProps): JS
         <div className="place-card__mark">
           <span>Premium</span>
         </div>}
-      <div className={`${className}__image-wrapper place-card__image-wrapper`}>
+      <div className={classNames(`${className}__image-wrapper`, 'place-card__image-wrapper')}>
         <Link to={{pathname: generatePath(`${AppRoute.Room}/:id`, {id: offer.id.toString()})}}>
           <img
             className="place-card__image"

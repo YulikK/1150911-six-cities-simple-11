@@ -8,10 +8,13 @@ import Features from '../features/features';
 import Host from '../../components/host/host';
 import Reviews from '../../components/reviews/reviews';
 import NearOffers from '../../components/near-offers/near-offers';
+import {Map} from '../../components/map/map';
+
 
 function PropertyScreen(): JSX.Element {
   const {id} = useParams();
   const currentOffer = offers.find((offer) => offer.id === Number(id));
+  const nearOffers = offers.filter((offer) => offer.id !== Number(id));
 
   return currentOffer
     ? (
@@ -50,9 +53,14 @@ function PropertyScreen(): JSX.Element {
               <Reviews offer={currentOffer}/>
             </div>
           </div>
-          <section className="property__map map" />
+          <Map
+            city={currentOffer.city}
+            points={nearOffers}
+            currentOffer={currentOffer}
+            classParents='property__map'
+          />
         </section>
-        <NearOffers currentOffer={currentOffer}/>
+        <NearOffers nearOffers={nearOffers} currentOffer={currentOffer}/>
       </main>
     )
     : (

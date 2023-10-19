@@ -36,6 +36,7 @@ function OffersList({offers, cardsCount, activeLocation}: OffersListProps):JSX.E
             city={activeLocation}
             points={offers}
             currentOffer={currentOffer}
+            classParents='cities__map'
           />
         </div>
       </div>
