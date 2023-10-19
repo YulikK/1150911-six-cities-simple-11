@@ -1,12 +1,13 @@
-import { OfferType } from '../../types/Offer';
+import { OfferType, CityType } from '../../types/Offer';
 import Offer from '../offer/offer';
 import Sort from '../sorting/sorting';
+import {Map} from '../map/map';
 import { useState } from 'react';
 
 type OffersListProps = {
   cardsCount: number;
   offers: OfferType[];
-  activeLocation: string;
+  activeLocation: CityType;
 }
 function OffersList({offers, cardsCount, activeLocation}: OffersListProps):JSX.Element {
   const [currentOffer, setCurrentOffer] = useState<OfferType | null>(null);
@@ -16,7 +17,7 @@ function OffersList({offers, cardsCount, activeLocation}: OffersListProps):JSX.E
       <div className="cities__places-container container">
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
-          <b className="places__found">{cardsCount} places to stay in {activeLocation}</b>
+          <b className="places__found">{cardsCount} places to stay in {activeLocation.name}</b>
           <Sort/>
           <div className="cities__places-list places__list tabs__content">
             {offers.map((offer) => (
@@ -31,7 +32,11 @@ function OffersList({offers, cardsCount, activeLocation}: OffersListProps):JSX.E
           </div>
         </section>
         <div className="cities__right-section">
-          <section className="cities__map map" />
+          <Map
+            city={activeLocation}
+            points={offers}
+            currentOffer={currentOffer}
+          />
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 export type OfferType = {
-  city: City;
+  city: CityType;
   previewImage: string;
   images?: string[] | null;
   title: string;
@@ -15,7 +15,7 @@ export type OfferType = {
   location: Location;
   id: number;
 };
-type City = {
+export type CityType = {
   name: string;
   location: Location;
 };
