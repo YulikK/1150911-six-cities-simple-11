@@ -1,5 +1,6 @@
 import { LOCATIONS } from '../../const/const';
 import { CityType } from '../../types/Offer';
+import classNames from 'classnames';
 
 type LocationsProps = {
   activeLocation: CityType;
@@ -21,9 +22,10 @@ function Locations({activeLocation, setActiveLocation}: LocationsProps): JSX.Ele
             (
               <li key={city.name} className="locations__item">
                 <a
-                  className={activeLocation === city
-                    ? 'locations__item-link tabs__item tabs__item--active'
-                    : 'locations__item-link tabs__item'}
+                  className={classNames(
+                    'locations__item-link',
+                    'tabs__item',
+                    {'tabs__item--active': activeLocation === city})}
                   href="/"
                   onClick={(evt) =>{
                     evt.preventDefault();

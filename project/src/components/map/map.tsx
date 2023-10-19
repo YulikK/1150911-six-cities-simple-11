@@ -4,11 +4,13 @@ import useMap from '../../hooks/useMap';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const/const';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import classNames from 'classnames';
 
 type MapProps = {
   city: CityType;
   points: OfferType[];
   currentOffer: OfferType | null;
+  classParents: string;
 };
 
 const defaultCustomIcon = leaflet.icon({
@@ -23,7 +25,7 @@ const currentCustomIcon = leaflet.icon({
   iconAnchor: [27, 39],
 });
 
-function Map({city, points, currentOffer}: MapProps): JSX.Element {
+function Map({city, points, currentOffer, classParents}: MapProps): JSX.Element {
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
@@ -54,7 +56,7 @@ function Map({city, points, currentOffer}: MapProps): JSX.Element {
 
   return(
     <section
-      className="cities__map map"
+      className={classNames(classParents,'map')}
       ref={mapRef}
     />
   );

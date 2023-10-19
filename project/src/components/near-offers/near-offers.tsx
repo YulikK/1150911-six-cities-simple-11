@@ -1,13 +1,12 @@
-import { offers } from '../../mocks/offers';
 import { OfferType } from '../../types/Offer';
 import Offer from '../offer/offer';
 
 type NearOffersProps ={
+  nearOffers: OfferType[];
   currentOffer: OfferType;
 }
 
-function NearOffers({currentOffer}: NearOffersProps):JSX.Element{
-  const nearOffers = offers.filter((offer) => offer.id !== currentOffer.id);
+function NearOffers({nearOffers, currentOffer}: NearOffersProps):JSX.Element{
   if(nearOffers.length > 3) {
     nearOffers.slice(0, 2);
   }

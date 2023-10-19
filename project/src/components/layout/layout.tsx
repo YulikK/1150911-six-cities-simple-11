@@ -1,8 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom';
-
 import Header from '../header/header';
-
 import { AppRoute } from '../../const/const';
+import classNames from 'classnames';
 
 function Layout(): JSX.Element {
 
@@ -10,10 +9,11 @@ function Layout(): JSX.Element {
   const isMainScreen:boolean = useLocation().pathname === AppRoute.Root;
   const isRoomScreen:boolean = useLocation().pathname.includes(AppRoute.Room);
 
-  let ClassNameWrap = '';
-  ClassNameWrap += isLoginScreen ? 'page page--gray page--login' : '';
-  ClassNameWrap += isMainScreen ? 'page page--gray page--main' : '';
-  ClassNameWrap += isRoomScreen ? 'page' : '';
+  const ClassNameWrap = classNames({
+    'page page--gray page--login': isLoginScreen,
+    'page page--gray page--main': isMainScreen,
+    'page': isRoomScreen
+  });
 
   return (
     <div className={ClassNameWrap}>
