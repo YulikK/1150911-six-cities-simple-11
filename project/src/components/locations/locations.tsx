@@ -1,14 +1,15 @@
 import { LOCATIONS } from '../../const/const';
+import { CityType } from '../../types/Offer';
 
 type LocationsProps = {
-  activeLocation: string;
-  setActiveLocation: (value: string) => void;
+  activeLocation: CityType;
+  setActiveLocation: (value: CityType) => void;
 }
 
 function Locations({activeLocation, setActiveLocation}: LocationsProps): JSX.Element {
 
 
-  const changeActiveLocation = (city: string) => {
+  const changeActiveLocation = (city: CityType) => {
     setActiveLocation(city);
   };
 
@@ -18,7 +19,7 @@ function Locations({activeLocation, setActiveLocation}: LocationsProps): JSX.Ele
         <ul className="locations__list tabs__list">
           {LOCATIONS.map((city) =>
             (
-              <li key={city} className="locations__item">
+              <li key={city.name} className="locations__item">
                 <a
                   className={activeLocation === city
                     ? 'locations__item-link tabs__item tabs__item--active'
@@ -29,7 +30,7 @@ function Locations({activeLocation, setActiveLocation}: LocationsProps): JSX.Ele
                     changeActiveLocation(city);
                   }}
                 >
-                  <span>{city}</span>
+                  <span>{city.name}</span>
                 </a>
               </li>
             )

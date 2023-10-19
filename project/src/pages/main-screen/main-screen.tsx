@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Locations from '../../components/locations/locations';
-import { OfferType } from '../../types/Offer';
+import { OfferType, CityType } from '../../types/Offer';
 import { LOCATIONS } from '../../const/const';
 import OffersList from '../../components/offers-list/offers-list';
 
@@ -11,7 +11,7 @@ type MainScreenProps = {
 
 function MainScreen({cardsCount, offers}: MainScreenProps) : JSX.Element {
 
-  const [activeLocation, setActiveLocation] = useState<string>(LOCATIONS[0]);
+  const [activeLocation, setActiveLocation] = useState<CityType>(LOCATIONS[0]);
 
   return (
     <main className="page__main page__main--index">
