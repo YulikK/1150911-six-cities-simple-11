@@ -1,16 +1,21 @@
 import { useState } from 'react';
 import { Sort } from '../../const/const';
 import classNames from 'classnames';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { changeSortType } from '../../store/action';
 
-function Sorting():JSX.Element {
-  const [activeSort, setActiveSort] = useState(Sort.POPULAR);
+function Sorting(): JSX.Element {
   const [isSortOpen, setIsSortOpen] = useState<boolean>(false);
 
-  return(
-    <form className="places__sorting" action="#" method="get" onClick={()=>setIsSortOpen(!isSortOpen)}>
+  const sortType = useAppSelector((state) => state.sortType);
+  const dispatch = useAppDispatch();
+
+
+  return (
+    <form className="places__sorting" action="#" method="get" onClick={() => setIsSortOpen(!isSortOpen)}>
       <span className="places__sorting-caption">Sort by</span>
       <span className="places__sorting-type" tabIndex={0}>
-        {activeSort}
+        {sortType}
         <svg className="places__sorting-arrow" width={7} height={4}>
           <use xlinkHref="#icon-arrow-select" />
         </svg>
@@ -18,16 +23,16 @@ function Sorting():JSX.Element {
       <ul className={classNames(
         'places__options',
         'places__options--custom',
-        {'places__options--opened': isSortOpen})}
+        { 'places__options--opened': isSortOpen })}
       >
-        {Object.entries(Sort).map(([key,value]) => (
+        {Object.entries(Sort).map(([key, value]) => (
           <li
             key={key}
-            className={activeSort === key ? 'places__option places__option--active' : 'places__option'}
+            className={sortType === key ? 'places__option places__option--active' : 'places__option'}
             tabIndex={0}
             onClick={() => {
               setIsSortOpen(!isSortOpen);
-              setActiveSort(value);
+              dispatch(changeSortType({ newSortType: value }));
             }}
           >
             {value}

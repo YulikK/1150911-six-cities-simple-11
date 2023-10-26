@@ -1,6 +1,6 @@
 import { CityType } from '../types/Offer';
 
-export const LOCATIONS:CityType[] = [
+export const LOCATIONS: CityType[] = [
   {
     'name': 'Paris',
     'location': {
@@ -50,6 +50,8 @@ export const LOCATIONS:CityType[] = [
     }
   }
 ];
+
+export const DEFAULT_CITY: CityType = LOCATIONS[0];
 
 export enum Sort {
   POPULAR = 'Popular',

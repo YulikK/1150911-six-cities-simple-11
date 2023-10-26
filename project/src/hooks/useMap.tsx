@@ -23,9 +23,11 @@ function useMap(
 
       leaflet
         .tileLayer(
-          'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+          'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
           {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 20
           },
         )
         .addTo(instance);
@@ -34,8 +36,8 @@ function useMap(
 
       isRenderedRef.current = city;
 
-      return() => {
-        if(isRenderedRef && map !== null){
+      return () => {
+        if (isRenderedRef && map !== null) {
           map.remove();
         }
       };
